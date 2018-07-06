@@ -7,13 +7,10 @@ const PORT = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 ///sert for heroku for hosting /////
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/grocery_app_dev';
- mongoose.connect(mongoUri);
-
-
 
 
 ////connect to mongo ////
-mongoose.connect(mongoUri, {useNewURLParser: true});
+mongoose.connect(mongoUri, { useNewUrlParser: true });
 mongoose.connection.on("open", ()=>{
   console.log("connected to mongoose!!");
 })
@@ -32,6 +29,10 @@ mongoose.connection.on("open", ()=>{
 ///create a basic new route ////
 app.get("/", (req, res)=>{
   res.send("this works");
+});
+
+app.get("/new", (req, res)=>{
+  res.render("new.ejs");
 });
 
 
