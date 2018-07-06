@@ -1,6 +1,7 @@
 ///Dependencies/////
 const express = require("express");
 const app = express();
+const Parent = require("./models/parents.js");
 ////listens on active port (3000 is local)////
 const PORT = process.env.PORT || 3000;
 ///set for mongoose dependency ////
@@ -56,9 +57,20 @@ app.get("/new", (req, res)=>{
 
 
 
-// create: POST '/products' 4/7
+// create: POST '/parents' 4/7
 app.post('/parents/', (req, res)=>{
     res.send('received');
+});
+
+app.post('/parents/', (req, res)=>{
+  if(req.body.over21 === 'on'){
+    req.body.over21 = true;
+  } else {
+    req.body.over21 = false;
+  }
+  Parent.create(req.body, err, createdParent)=>{
+    res.send(createdParent);
+  });
 });
 
 //edit: GET '/parents/:id/edit' 5/7
