@@ -8,20 +8,20 @@
     <h1> New Parent registration</h1>
     <form action="/parents" method="POST">
         Name: <input type="text" name="name" /><br/>
-        <select name ="numOfKids" size = "4">
-              <option value ="1 - 2">1 - 2</option>
-              <option value = "3 - 4">3 - 4</option>
-              <option value = "5 - 6">5 - 6</option>
-              <option value = "6 +">6 + </option>
-        </select>
-        <select name ="rangeOfKids" size = "4">
-              <option value ="preschool">preschool</options>
-              <option value ="elementary">elementary</options>
-              <options value ="middleschool">middle school</options>
-              <options value="highschool">highschool</options>
-
-        </select>
-        Over 21 ?: <input type="checkbox" name="over21" /><br/>
+        Username: <input type ="text" name="username" /><br/>
+         Number of Kids: <select name ="numOfKids" size = "4">
+                            <option value ="1 - 2">1 - 2</option>
+                            <option value = "3 - 4">3 - 4</option>
+                            <option value = "5 - 6">5 - 6</option>
+                            <option value = "6  +">6 + </option>
+                          </select>
+        School Age: <select name ="rangeOfKids" size = "4">
+                          <option value ="preschool">preschool</option>
+                          <option value ="elementary">elementary</option>
+                          <option value ="middleschool">middle school</option>
+                          <option value="highschool">highschool</option>
+                        </select><br/>
+        Are you 21+ ?: <input type="checkbox" name="over21" /><br/>
         <input type="submit" name="submit" value="Create Account"/>
     </form>
 
