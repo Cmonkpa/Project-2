@@ -18,7 +18,7 @@ mongoose.connection.on("open", ()=>{
 })
 /// Controllers///
 
-
+//update to move to controller route
 
 
 ///Middleware/////
@@ -94,7 +94,16 @@ app.get("/parents/:id/edit", (req, res)=>{
 });
 
 //update: PUT '/parents/:id'  6/7
-
+//need to update this code...this is placeholder for update route.
+app.put("/parents/:id", (req, res)=>{
+  Parent.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, parent)=>{
+    if(err){
+      res.send(err.message)
+    } else{
+      res.redirect('/parents/' + parent.id)
+    }
+  });
+});
 
 
 //delete: DELETE '/parents/:id' 7/7
