@@ -42,8 +42,8 @@ app.use(express.json()) //
 ///create a basic new route ////
 
 //Index : GET '/parents'  1/7
-app.get("/", (req, res)=>{
-  res.send("this works");
+app.get("/parents", (req, res)=>{
+  res.send("index.ejs");
 });
 
 
