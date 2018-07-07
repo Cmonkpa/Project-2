@@ -82,7 +82,16 @@ app.post('/parents/', (req, res)=>{
 });
 
 //edit: GET '/parents/:id/edit' 5/7
-
+app.get("/parents/:id/edit", (req, res)=>{
+  Parent.findById(req.params.id, (err, foundParent)={
+    res.render(
+          "edit.ejs",
+          {
+              parent: foundParent
+          }
+    );
+  });
+});
 
 //update: PUT '/parents/:id'  6/7
 
@@ -90,7 +99,9 @@ app.post('/parents/', (req, res)=>{
 
 //delete: DELETE '/parents/:id' 7/7
 app.delete('/parents/:id',(req, res)=>{
-  res.send("deleting...");
+  Parent.findByIdAndRemove(req.params.id, (err, data)=>{
+    res.redirect('/parents');  //redirect back to parents index
+  });
 });
 
 ///Parent Log in??
