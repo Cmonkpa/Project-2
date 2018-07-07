@@ -1,5 +1,6 @@
 ///Dependencies/////
 const express = require("express");
+const methodOverride = require("method-override")
 const app = express();
 const Parent = require("./models/parents.js");
 ////listens on active port (3000 is local)////
@@ -23,6 +24,8 @@ mongoose.connection.on("open", ()=>{
 ///Middleware/////
 app.use(express.urlencoded({extended:true}));
 app.use(express.json()) //
+//allows for post, put and delete
+app.use(methodOverride('_method'))
 
 
 
@@ -53,14 +56,19 @@ app.get("/new", (req, res)=>{
 });
 
 //show : GET '/parents/:id' 2/7
-
+app.get('/parents/:id',(req, res)=>{
+  Parent.findById(req.params.id, (err, parent)=>{
+    res.send(parent);
+  });
+});
 
 
 
 // create: POST '/parents' 4/7
-app.post('/parents/', (req, res)=>{
-    res.send('received');
-});
+//initial create route
+// app.post('/parents/', (req, res)=>{
+//     res.send('received');
+// });
 
 app.post('/parents/', (req, res)=>{
   if(req.body.over21 === 'on'){
@@ -81,7 +89,9 @@ app.post('/parents/', (req, res)=>{
 
 
 //delete: DELETE '/parents/:id' 7/7
-
+app.delete('/parents/:id',(req, res)=>{
+  res.send("deleting...");
+});
 
 ///Parent Log in??
 
